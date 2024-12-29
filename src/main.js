@@ -49,7 +49,7 @@ rgbeLoader.load(
     scene.environment = texture;
 
     const loader = new GLTFLoader();
-    loader.load("/public/DamagedHelmet.gltf", (gltf) => {
+    loader.load("public/DamagedHelmet.gltf", (gltf) => {
       model = gltf.scene;
       scene.add(model);
     });
