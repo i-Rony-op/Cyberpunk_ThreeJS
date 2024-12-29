@@ -1,6 +1,5 @@
 import "./style.css";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer";
@@ -37,7 +36,6 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1;
-renderer.outputEncoding = THREE.sRGBEncoding;
 
 // Add HDR Environment
 let model;
@@ -49,7 +47,7 @@ rgbeLoader.load(
     scene.environment = texture;
 
     const loader = new GLTFLoader();
-    loader.load("public/DamagedHelmet.gltf", (gltf) => {
+    loader.load("/public/DamagedHelmet.gltf", (gltf) => {
       model = gltf.scene;
       scene.add(model);
     });
