@@ -32,7 +32,10 @@ const renderer = new THREE.WebGLRenderer({
   antialias: true,
   alpha: true,
 });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setPixelRatio(
+  window.devicePixelRatio <= 2 ? window.devicePixelRatio : 2
+);
+
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1;
@@ -83,7 +86,8 @@ window.addEventListener("mousemove", (e) => {
 });
 
 gsap.from("nav a,nav img, nav button", {
-  y: -100,
+  z: -100,
+  rotateX: 90,
   stagger: 0.1,
   opacity: 0,
   duration: 1,
@@ -115,7 +119,6 @@ window.addEventListener("resize", () => {
 });
 function animate() {
   composer.render();
-
   window.requestAnimationFrame(animate);
 }
 
